@@ -525,10 +525,21 @@
                         "description": "The body",
                         "required": true,
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "string"
-                            }
+                            "anyOf" :
+                            [
+                                {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "type": "string"
+                                    }   
+                                },
+                                {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "$ref": "#/definitions/Object"
+                                    }   
+                                }
+                            ]
                         }
                     }
                 ],
