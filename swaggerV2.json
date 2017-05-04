@@ -615,7 +615,7 @@
                 "deprecated":false
             }
         },
-		"/v1.0/myorg/dashboards":{
+        "/v1.0/myorg/dashboards":{
             "get":{
                 "tags":[
                     "Dashboards"
@@ -623,11 +623,13 @@
                 "summary":"Gets a list of dashboards",
                 "operationId":"Dashboards_GetDashboards",
                 "consumes":[
+
                 ],
                 "produces":[
                     "application/json"
                 ],
                 "parameters":[
+
                 ],
                 "responses":{
                     "200":{
@@ -640,7 +642,7 @@
                 "deprecated":false
             }
         },
-		"/v1.0/myorg/dashboards/{dashboardKey}":{
+        "/v1.0/myorg/dashboards/{dashboardKey}":{
             "post":{
                 "tags":[
                     "Reports"
@@ -673,7 +675,7 @@
                 "deprecated":false
             }
         },
-		"/v1.0/myorg/dashboards/{dashboardKey}/tiles":{
+        "/v1.0/myorg/dashboards/{dashboardKey}/tiles":{
             "post":{
                 "tags":[
                     "Tiles"
@@ -706,7 +708,7 @@
                 "deprecated":false
             }
         },
-		"/v1.0/myorg/dashboards/{dashboardKey}/tiles/{tileKey}":{
+        "/v1.0/myorg/dashboards/{dashboardKey}/tiles/{tileKey}":{
             "post":{
                 "tags":[
                     "Tiles"
@@ -727,7 +729,7 @@
                         "required":true,
                         "type":"string"
                     },
-					{
+                    {
                         "name":"tileKey",
                         "description":"The tile id",
                         "in":"path",
@@ -830,7 +832,7 @@
                 "deprecated":false
             }
         },
-		"/v1.0/myorg/dashboards/{dashboardKey}/GenerateToken":{
+        "/v1.0/myorg/dashboards/{dashboardKey}/GenerateToken":{
             "post":{
                 "tags":[
                     "Dashboards"
@@ -1852,7 +1854,7 @@
                 "deprecated":false
             }
         },
-		"/v1.0/myorg/groups/{groupId}/dashboards/{dashboardKey}/GenerateToken":{
+        "/v1.0/myorg/groups/{groupId}/dashboards/{dashboardKey}/GenerateToken":{
             "post":{
                 "tags":[
                     "Dashboards"
@@ -2298,7 +2300,7 @@
                 }
             }
         },
-		"ODataResponse[List[Dashboard]]":{
+        "ODataResponse[List[Dashboard]]":{
             "type":"object",
             "description":"Odata response wrapper for a Power BI Dashboard collection",
             "properties":{
@@ -2315,7 +2317,7 @@
                 }
             }
         },
-		"ODataResponse[List[Tile]]":{
+        "ODataResponse[List[Tile]]":{
             "type":"object",
             "description":"Odata response wrapper for a Power BI Tile collection",
             "properties":{
@@ -2388,7 +2390,7 @@
                 }
             }
         },
-		"Dashboard":{
+        "Dashboard":{
             "type":"object",
             "description":"A Power BI Dashboard",
             "properties":{
@@ -2410,7 +2412,7 @@
                 }
             }
         },
-		"Tile":{
+        "Tile":{
             "type":"object",
             "description":"A Power BI Tile",
             "properties":{
@@ -2426,7 +2428,7 @@
                     "type":"integer",
                     "description":"number of rows a tile should span"
                 },
-				"colSpan":{
+                "colSpan":{
                     "type":"integer",
                     "description":"number of columns a tile should span"
                 },
