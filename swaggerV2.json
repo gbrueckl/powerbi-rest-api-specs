@@ -615,6 +615,137 @@
                 "deprecated":false
             }
         },
+		"/v1.0/myorg/dashboards":{
+            "get":{
+                "tags":[
+                    "Dashboards"
+                ],
+                "summary":"Gets a list of dashboards",
+                "operationId":"Dashboards_GetDashboards",
+                "consumes":[
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/ODataResponse[List[Dashboard]]"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
+		"/v1.0/myorg/dashboards/{dashboardKey}":{
+            "post":{
+                "tags":[
+                    "Reports"
+                ],
+                "summary":"Get the specified dashboard",
+                "operationId":"Dashboards_GetDashboard",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"dashboardKey",
+                        "description":"The dashboard id",
+                        "in":"path",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Dashboard"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
+		"/v1.0/myorg/dashboards/{dashboardKey}/tiles":{
+            "post":{
+                "tags":[
+                    "Tiles"
+                ],
+                "summary":"Get tiles in the specified dashboard",
+                "operationId":"Dashboards_GetTiles",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"dashboardKey",
+                        "description":"The dashboard id",
+                        "in":"path",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/ODataResponse[List[Tile]]"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
+		"/v1.0/myorg/dashboards/{dashboardKey}/tiles/{tileKey}":{
+            "post":{
+                "tags":[
+                    "Tiles"
+                ],
+                "summary":"Get tiles in the specified dashboard",
+                "operationId":"Dashboards_GetTiles",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"dashboardKey",
+                        "description":"The dashboard id",
+                        "in":"path",
+                        "required":true,
+                        "type":"string"
+                    },
+					{
+                        "name":"tileKey",
+                        "description":"The tile id",
+                        "in":"path",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Tile"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
         "/v1.0/myorg/reports/{reportKey}/Clone":{
             "post":{
                 "tags":[
@@ -674,6 +805,48 @@
                     {
                         "name":"reportKey",
                         "description":"The report id",
+                        "in":"path",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"requestParameters",
+                        "description":"Generate token parameters",
+                        "in":"body",
+                        "required":true,
+                        "schema":{
+                            "$ref":"#/definitions/GenerateTokenRequest"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/EmbedToken"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
+		"/v1.0/myorg/dashboards/{dashboardKey}/GenerateToken":{
+            "post":{
+                "tags":[
+                    "Dashboards"
+                ],
+                "summary":"Generate token to view the specified dashboard",
+                "operationId":"Dashboards_GenerateToken",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"dashboardKey",
+                        "description":"The dashboard id",
                         "in":"path",
                         "required":true,
                         "type":"string"
@@ -1679,6 +1852,55 @@
                 "deprecated":false
             }
         },
+		"/v1.0/myorg/groups/{groupId}/dashboards/{dashboardKey}/GenerateToken":{
+            "post":{
+                "tags":[
+                    "Dashboards"
+                ],
+                "summary":"Generate token to view the specified dashboard",
+                "operationId":"Dashboards_GenerateTokenInGroup",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"groupId",
+                        "in":"path",
+                        "required":true,
+                        "description":"The group id",
+                        "type":"string"
+                    },
+                    {
+                        "name":"dashboardKey",
+                        "description":"The dashboard id",
+                        "in":"path",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"requestParameters",
+                        "description":"Generate token parameters",
+                        "in":"body",
+                        "required":true,
+                        "schema":{
+                            "$ref":"#/definitions/GenerateTokenRequest"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/EmbedToken"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
         "/v1.0/myorg/groups/{groupId}/reports/GenerateToken":{
             "post":{
                 "tags":[
@@ -2076,6 +2298,40 @@
                 }
             }
         },
+		"ODataResponse[List[Dashboard]]":{
+            "type":"object",
+            "description":"Odata response wrapper for a Power BI Dashboard collection",
+            "properties":{
+                "odata.context":{
+                    "type":"string",
+                    "description":"OData context"
+                },
+                "value":{
+                    "type":"array",
+                    "description":"The dashboard collection",
+                    "items":{
+                        "$ref":"#/definitions/Dashboard"
+                    }
+                }
+            }
+        },
+		"ODataResponse[List[Tile]]":{
+            "type":"object",
+            "description":"Odata response wrapper for a Power BI Tile collection",
+            "properties":{
+                "odata.context":{
+                    "type":"string",
+                    "description":"OData context"
+                },
+                "value":{
+                    "type":"array",
+                    "description":"The tile collection",
+                    "items":{
+                        "$ref":"#/definitions/Tile"
+                    }
+                }
+            }
+        },
         "ODataResponse[List[Import]]":{
             "type":"object",
             "description":"Odata response wrapper for a Power BI Import collection",
@@ -2129,6 +2385,58 @@
                 "embedUrl":{
                     "type":"string",
                     "description":"The report embed url"
+                }
+            }
+        },
+		"Dashboard":{
+            "type":"object",
+            "description":"A Power BI Dashboard",
+            "properties":{
+                "id":{
+                    "type":"string",
+                    "description":"The dashboard id"
+                },
+                "displayName":{
+                    "type":"string",
+                    "description":"The dashboard display name"
+                },
+                "isReadOnly":{
+                    "type":"boolean",
+                    "description":"Is ReadOnly dashboard"
+                },
+                "embedUrl":{
+                    "type":"string",
+                    "description":"The dashboard embed url"
+                }
+            }
+        },
+		"Tile":{
+            "type":"object",
+            "description":"A Power BI Tile",
+            "properties":{
+                "id":{
+                    "type":"string",
+                    "description":"The tile id"
+                },
+                "title":{
+                    "type":"string",
+                    "description":"The dashboard display name"
+                },
+                "rowSpan":{
+                    "type":"integer",
+                    "description":"number of rows a tile should span"
+                },
+				"colSpan":{
+                    "type":"integer",
+                    "description":"number of columns a tile should span"
+                },
+                "embedUrl":{
+                    "type":"string",
+                    "description":"The tile embed url"
+                },
+                "embedData":{
+                    "type":"string",
+                    "description":"The tile embed data"
                 }
             }
         },
