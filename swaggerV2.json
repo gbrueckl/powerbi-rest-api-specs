@@ -434,6 +434,29 @@
                 "deprecated":false
             }
         },
+        "/v1.0/myorg/gateways":{
+            "get":{
+                "tags":[
+                    "Gateways"
+                ],
+                "operationId":"Gateways_GetGateways",
+                "summary":"Returns a list of gateways",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[],
+                "parameters":[],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/ODataResponse[List[Gateway]]"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
         "/v1.0/myorg/gateways/{gatewayId}/datasources/{datasourceId}":{
             "patch":{
                 "tags":[
@@ -1479,6 +1502,37 @@
                 "deprecated":false
             }
         },
+        "/v1.0/myorg/groups/{groupId}/gateways":{
+            "get":{
+                "tags":[
+                    "Gateways"
+                ],
+                "operationId":"Gateways_GetGatewaysInGroup",
+                "summary":"Returns a list of gateways",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[],
+                "parameters":[
+                    {
+                        "name":"groupId",
+                        "in":"path",
+                        "required":true,
+                        "description":"The group id",
+                        "type":"string"
+                    },
+				],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/ODataResponse[List[Gateway]]"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
         "/v1.0/myorg/groups/{groupId}/gateways/{gatewayId}/datasources/{datasourceId}":{
             "patch":{
                 "tags":[
@@ -2368,6 +2422,22 @@
                 }
             }
         },
+        "ODataResponse[List[Gateway]]": {
+            "type": "object",
+            "description": "Odata response wrapper for a Power BI Gateways list",
+            "properties": {
+                "odata.context": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "array",
+                    "description": "The Gateways",
+                    "items": {
+                        "$ref": "#/definitions/Gateway"
+                    }
+                }
+            }
+        },
         "Report":{
             "type":"object",
             "description":"A Power BI Report",
@@ -2460,7 +2530,47 @@
                 }
             }
         },
-        "CloneReportRequest":{
+        "GatewayPublicKey": {
+            "type": "object",
+            "description": "A Power BI Gateway Public Key",
+            "properties": {
+                "exponent": {
+                    "type": "string",
+                    "description": "The public key exponent"
+                },
+                "modulus": {
+                    "type": "string",
+                    "description": "The public key  modulus"
+                }
+            }
+        },
+        "Gateway": {
+            "type": "object",
+            "description": "A Power BI Gateway",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The gateway id"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The gateway name"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The gateway type"
+                },
+                "gatewayAnnotation": {
+                    "type": "string",
+                    "description": "The gateway annotation"
+                },
+                "publicKey": {
+                    "$ref": "#/definitions/GatewayPublicKey",
+                    "description": "The gateway public key"
+                }
+            }
+        },
+		"CloneReportRequest":{
             "type":"object",
             "description":"Power BI Clone Report Request",
             "properties":{
