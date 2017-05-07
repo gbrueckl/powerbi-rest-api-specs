@@ -441,10 +441,10 @@
                 ],
                 "operationId":"Gateways_GetGateways",
                 "summary":"Returns a list of gateways",
-                "consumes":[
+                "consumes":[],
+                "produces":[
                     "application/json"
                 ],
-                "produces":[],
                 "parameters":[],
                 "responses":{
                     "200":{
@@ -1509,10 +1509,10 @@
                 ],
                 "operationId":"Gateways_GetGatewaysInGroup",
                 "summary":"Returns a list of gateways",
-                "consumes":[
+                "consumes":[],
+                "produces":[
                     "application/json"
                 ],
-                "produces":[],
                 "parameters":[
                     {
                         "name":"groupId",
@@ -1521,7 +1521,7 @@
                         "description":"The group id",
                         "type":"string"
                     },
-				],
+                ],
                 "responses":{
                     "200":{
                         "description":"OK",
