@@ -457,6 +457,219 @@
                 "deprecated":false
             }
         },
+		"/v1.0/myorg/gateways/{gatewayId}":{
+            "get":{
+                "tags":[
+                    "Gateways"
+                ],
+                "operationId":"Gateways_GetGatewayById",
+                "summary":"Returns the specified gateway",
+                "consumes":[],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name": "gatewayId",
+                        "in": "path",
+                        "description": "The gateway id",
+                        "required": true,
+                        "type": "string"
+                    },
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Gateway"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
+		"/v1.0/myorg/gateways/{gatewayId}/datasources": {
+            "get": {
+                "tags": [
+                    "Datasources"
+                ],
+                "operationId": "Gateways_GetDatasources",
+                "summary": "Get all datasources of specific gateway",
+                "consumes": [ ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "gatewayId",
+                        "in": "path",
+                        "description": "The gateway id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ODataResponse[List[GatewayDatasource]]"
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Datasources"
+                ],
+                "operationId": "Gateways_CreateDatasource",
+                "summary": "Create a datasource",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "gatewayId",
+                        "in": "path",
+                        "description": "The gateway id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "datasourceToGatewayRequest",
+                        "in": "body",
+                        "description": "The datasource requested to create",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PublishDatasourceToGatewayRequest"
+                        }
+                    },
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/GatewayDatasource"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.0/myorg/gateways/{gatewayId}/datasources/{datasourceId}": {
+            "get": {
+                "tags": [
+                    "Datasources"
+                ],
+                "operationId": "Gateways_GetDatasourceById",
+                "summary": "Get a datasource by id",
+                "consumes": [ ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "gatewayId",
+                        "in": "path",
+                        "description": "The gateway id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "datasourceId",
+                        "in": "path",
+                        "description": "The datasource id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/GatewayDatasource"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Datasources"
+                ],
+                "operationId": "Gateways_DeleteDatasource",
+                "summary": "Delete a datasource",
+                "consumes": [ ],
+                "produces": [ ],
+                "parameters": [
+                    {
+                        "name": "gatewayId",
+                        "in": "path",
+                        "description": "The gateway id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "datasourceId",
+                        "in": "path",
+                        "description": "The datasource id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Datasources"
+                ],
+                "operationId": "Gateways_UpdateDatasource",
+                "summary": "Update a datasource credentials",
+                "consumes": [ ],
+                "produces": [ ],
+                "parameters": [
+                    {
+                        "name": "gatewayId",
+                        "in": "path",
+                        "description": "The gateway id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "datasourceId",
+                        "in": "path",
+                        "description": "The datasource id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "updateDatasourceRequest",
+                        "in": "body",
+                        "description": "The update datasource request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateDatasourceRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Object"
+                        }
+                    }
+                }
+            }
+        },
         "/v1.0/myorg/gateways/{gatewayId}/datasources/{datasourceId}":{
             "patch":{
                 "tags":[
@@ -1533,6 +1746,261 @@
                 "deprecated":false
             }
         },
+		"/v1.0/myorg/groups/{groupId}/gateways/{gatewayId}":{
+            "get":{
+                "tags":[
+                    "Gateways"
+                ],
+                "operationId":"Gateways_GetGatewayByIdInGroup",
+                "summary":"Returns the specified gateway",
+                "consumes":[],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"groupId",
+                        "in":"path",
+                        "required":true,
+                        "description":"The group id",
+                        "type":"string"
+                    },
+                    {
+                        "name": "gatewayId",
+                        "in": "path",
+                        "description": "The gateway id",
+                        "required": true,
+                        "type": "string"
+                    },
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Gateway"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
+        "/v1.0/myorg/groups/{groupId}/gateways/{gatewayId}/datasources": {
+            "get": {
+                "tags": [
+                    "Datasources"
+                ],
+                "operationId": "Gateways_GetDatasourcesInGroup",
+                "summary": "Get all datasources of specific gateway",
+                "consumes": [ ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name":"groupId",
+                        "in":"path",
+                        "required":true,
+                        "description":"The group id",
+                        "type":"string"
+                    },
+                    {
+                        "name": "gatewayId",
+                        "in": "path",
+                        "description": "The gateway id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ODataResponse[List[GatewayDatasource]]"
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Datasources"
+                ],
+                "operationId": "Gateways_CreateDatasourceInGroup",
+                "summary": "Create a datasource",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name":"groupId",
+                        "in":"path",
+                        "required":true,
+                        "description":"The group id",
+                        "type":"string"
+                    },
+                    {
+                        "name": "gatewayId",
+                        "in": "path",
+                        "description": "The gateway id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "datasourceToGatewayRequest",
+                        "in": "body",
+                        "description": "The datasource requested to create",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PublishDatasourceToGatewayRequest"
+                        }
+                    },
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/GatewayDatasource"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1.0/myorg/groups/{groupId}/gateways/{gatewayId}/datasources/{datasourceId}": {
+            "get": {
+                "tags": [
+                    "Datasources"
+                ],
+                "operationId": "Gateways_GetDatasourceByIdInGroup",
+                "summary": "Get a datasource by id",
+                "consumes": [ ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name":"groupId",
+                        "in":"path",
+                        "required":true,
+                        "description":"The group id",
+                        "type":"string"
+                    },
+                    {
+                        "name": "gatewayId",
+                        "in": "path",
+                        "description": "The gateway id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "datasourceId",
+                        "in": "path",
+                        "description": "The datasource id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/GatewayDatasource"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Datasources"
+                ],
+                "operationId": "Gateways_DeleteDatasourceInGroup",
+                "summary": "Delete a datasource",
+                "consumes": [ ],
+                "produces": [ ],
+                "parameters": [
+                    {
+                        "name":"groupId",
+                        "in":"path",
+                        "required":true,
+                        "description":"The group id",
+                        "type":"string"
+                    },
+                    {
+                        "name": "gatewayId",
+                        "in": "path",
+                        "description": "The gateway id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "datasourceId",
+                        "in": "path",
+                        "description": "The datasource id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Datasources"
+                ],
+                "operationId": "Gateways_UpdateDatasourceInGroup",
+                "summary": "Update a datasource credentials",
+                "consumes": [ ],
+                "produces": [ ],
+                "parameters": [
+                    {
+                        "name":"groupId",
+                        "in":"path",
+                        "required":true,
+                        "description":"The group id",
+                        "type":"string"
+                    },
+                    {
+                        "name": "gatewayId",
+                        "in": "path",
+                        "description": "The gateway id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "datasourceId",
+                        "in": "path",
+                        "description": "The datasource id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "updateDatasourceRequest",
+                        "in": "body",
+                        "description": "The update datasource request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateDatasourceRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Object"
+                        }
+                    }
+                }
+            }
+        },
         "/v1.0/myorg/groups/{groupId}/gateways/{gatewayId}/datasources/{datasourceId}":{
             "patch":{
                 "tags":[
@@ -2288,6 +2756,10 @@
                     "type":"string",
                     "description":"The associated gateway id"
                 },
+                "datasourceName":{
+                    "type":"string",
+                    "description":"The datasource name"
+                },
                 "datasourceType":{
                     "type":"string",
                     "description":"The datasource type"
@@ -2567,10 +3039,70 @@
                 "publicKey": {
                     "$ref": "#/definitions/GatewayPublicKey",
                     "description": "The gateway public key"
+                },
+                "gatewayStatus": {
+                    "$ref": "string",
+                    "description": "The gateway connectivity status"
                 }
             }
         },
-		"CloneReportRequest":{
+        "PublishDatasourceToGatewayRequest": {
+            "type": "object",
+            "description": "A Publish Datasource To Gateway Request",
+            "properties": {
+                "dataSourceType": {
+                    "type": "string",
+                    "description": "The datasource type"
+                },
+                "connectionDetails": {
+                    "type": "string",
+                    "description": "The connection details"
+                },
+                "credentialDetails": {
+                    "$ref": "#/definitions/CredentialDetails"
+                },
+                "dataSourceName": {
+                    "type": "string",
+                    "description": "The datasource name"
+                }
+            }
+        },
+        "CredentialDetails": {
+            "type": "object",
+            "description": "The credential details",
+            "properties": {
+                "credentials": {
+                    "type": "string",
+                    "description": "The credentials"
+                },
+                "credentialType": {
+                    "type": "string",
+                    "description": "The connection type"
+                },
+                "encryptedConnection": {
+                    "type": "string",
+                    "description": "The encrypted connection"
+                },
+                "encryptionAlgorithm": {
+                    "type": "string",
+                    "description": "The encryption algorithm"
+                },
+                "privacyLevel": {
+                    "type": "string",
+                    "description": "The privacy level"
+                }
+            }
+        },
+        "UpdateDatasourceRequest": {
+            "type": "object",
+            "description": "An Update Datasource To Gateway Request",
+            "properties": {
+                "credentialDetails": {
+                    "$ref": "#/definitions/CredentialDetails"
+                }
+            }
+        },
+        "CloneReportRequest":{
             "type":"object",
             "description":"Power BI Clone Report Request",
             "properties":{
