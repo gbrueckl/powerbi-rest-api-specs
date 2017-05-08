@@ -527,9 +527,7 @@
                 "consumes": [
                     "application/json"
                 ],
-                "produces": [
-                    "application/json"
-                ],
+                "produces": [],
                 "parameters": [
                     {
                         "name": "gatewayId",
@@ -551,8 +549,8 @@
                 "responses": {
                     "201": {
                         "description": "Created",
-                        "schema": {
-                            "$ref": "#/definitions/GatewayDatasource"
+                        "schema":{
+                            "$ref":"#/definitions/Object"
                         }
                     }
                 }
