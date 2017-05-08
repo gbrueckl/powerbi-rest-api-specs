@@ -475,7 +475,7 @@
                         "description": "The gateway id",
                         "required": true,
                         "type": "string"
-                    },
+                    }
                 ],
                 "responses":{
                     "200":{
@@ -546,7 +546,7 @@
                         "schema": {
                             "$ref": "#/definitions/PublishDatasourceToGatewayRequest"
                         }
-                    },
+                    }
                 ],
                 "responses": {
                     "201": {
@@ -668,55 +668,6 @@
                         }
                     }
                 }
-            }
-        },
-        "/v1.0/myorg/gateways/{gatewayId}/datasources/{datasourceId}":{
-            "patch":{
-                "tags":[
-                    "Gateways"
-                ],
-                "operationId":"Gateways_PatchDatasource",
-                "summary":"Updates the credentials for the specified datasource",
-                "consumes":[
-                    "application/json"
-                ],
-                "produces":[
-
-                ],
-                "parameters":[
-                    {
-                        "name":"gatewayId",
-                        "in":"path",
-                        "description":"The gateway id",
-                        "required":true,
-                        "type":"string"
-                    },
-                    {
-                        "name":"datasourceId",
-                        "in":"path",
-                        "description":"The datasource id",
-                        "required":true,
-                        "type":"string"
-                    },
-                    {
-                        "name":"datasourceDelta",
-                        "in":"body",
-                        "description":"The datasource changes",
-                        "required":true,
-                        "schema":{
-                            "$ref":"#/definitions/Object"
-                        }
-                    }
-                ],
-                "responses":{
-                    "200":{
-                        "description":"OK",
-                        "schema":{
-                            "$ref":"#/definitions/Object"
-                        }
-                    }
-                },
-                "deprecated":false
             }
         },
         "/v1.0/myorg/imports":{
@@ -1733,7 +1684,7 @@
                         "required":true,
                         "description":"The group id",
                         "type":"string"
-                    },
+                    }
                 ],
                 "responses":{
                     "200":{
@@ -1771,7 +1722,7 @@
                         "description": "The gateway id",
                         "required": true,
                         "type": "string"
-                    },
+                    }
                 ],
                 "responses":{
                     "200":{
@@ -1856,7 +1807,7 @@
                         "schema": {
                             "$ref": "#/definitions/PublishDatasourceToGatewayRequest"
                         }
-                    },
+                    }
                 ],
                 "responses": {
                     "201": {
@@ -1999,62 +1950,6 @@
                         }
                     }
                 }
-            }
-        },
-        "/v1.0/myorg/groups/{groupId}/gateways/{gatewayId}/datasources/{datasourceId}":{
-            "patch":{
-                "tags":[
-                    "Gateways"
-                ],
-                "operationId":"Gateways_PatchDatasourceInGroup",
-                "summary":"Updates the credentials for the specified datasource",
-                "consumes":[
-                    "application/json"
-                ],
-                "produces":[
-
-                ],
-                "parameters":[
-                    {
-                        "name":"groupId",
-                        "in":"path",
-                        "required":true,
-                        "description":"The group id",
-                        "type":"string"
-                    },
-                    {
-                        "name":"gatewayId",
-                        "in":"path",
-                        "description":"The gateway id",
-                        "required":true,
-                        "type":"string"
-                    },
-                    {
-                        "name":"datasourceId",
-                        "in":"path",
-                        "description":"The datasource id",
-                        "required":true,
-                        "type":"string"
-                    },
-                    {
-                        "name":"datasourceDelta",
-                        "in":"body",
-                        "description":"The datasource changes",
-                        "required":true,
-                        "schema":{
-                            "$ref":"#/definitions/Object"
-                        }
-                    }
-                ],
-                "responses":{
-                    "200":{
-                        "description":"OK",
-                        "schema":{
-                            "$ref":"#/definitions/Object"
-                        }
-                    }
-                },
-                "deprecated":false
             }
         },
         "/v1.0/myorg/groups/{groupId}/imports":{
@@ -3041,7 +2936,7 @@
                     "description": "The gateway public key"
                 },
                 "gatewayStatus": {
-                    "$ref": "string",
+                    "type": "string",
                     "description": "The gateway connectivity status"
                 }
             }
