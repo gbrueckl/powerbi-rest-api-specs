@@ -314,7 +314,67 @@
                 "deprecated":false
             }
         },
-        "/v1.0/myorg/datasets/{datasetKey}/Default.GetBoundGatewayDatasources":{
+        "/v1.0/myorg/datasets/{datasetKey}/refreshes":{
+            "get":{
+                "tags":[
+                    "Datasets"
+                ],
+                "operationId":"Datasets_GetRefreshHistory",
+                "summary":"Gets the dataset refresh history",
+                "consumes":[],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"datasetKey",
+                        "description":"The dataset id",
+                        "in":"path",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/ODataResponse[List[Refresh]]"
+                        }
+                    }
+                },
+                "deprecated":false
+            },
+            "post":{
+                "tags":[
+                    "Datasets"
+                ],
+                "operationId":"Datasets_RefreshDataset",
+                "summary":"Start a dataset refresh",
+                "consumes":[
+                ],
+                "produces":[
+                ],
+                "parameters":[
+                    {
+                        "name":"datasetKey",
+                        "description":"The dataset id",
+                        "in":"path",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "202":{
+                        "description":"Accepted",
+                        "schema":{
+                            "$ref":"#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
+		"/v1.0/myorg/datasets/{datasetKey}/Default.GetBoundGatewayDatasources":{
             "get":{
                 "tags":[
                     "Datasets"
@@ -420,6 +480,48 @@
                                     }
                                 }
                             ]
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
+		"/v1.0/myorg/datasets/{datasetKey}/Default.BindToGateway":{
+            "post":{
+                "tags":[
+                    "Datasets"
+                ],
+                "operationId":"Datasets_BindToGateway",
+                "summary":"Bind dataset to gateway",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+
+                ],
+                "parameters":[
+                    {
+                        "name":"datasetKey",
+                        "in":"path",
+                        "description":"The dataset id",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name": "bindToGatewayRequest",
+                        "in": "body",
+                        "description": "The bind to gateway request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/BindToGatewayRequest"
                         }
                     }
                 ],
@@ -1523,7 +1625,81 @@
                 "deprecated":false
             }
         },
-        "/v1.0/myorg/groups/{groupId}/datasets/{datasetKey}/Default.GetBoundGatewayDatasources":{
+        "/v1.0/myorg/groups/{groupId}/datasets/{datasetKey}/refreshes":{
+            "get":{
+                "tags":[
+                    "Datasets"
+                ],
+                "operationId":"Datasets_GetRefreshHistoryInGroup",
+                "summary":"Gets the dataset refresh history",
+                "consumes":[],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"groupId",
+                        "in":"path",
+                        "required":true,
+                        "description":"The group id",
+                        "type":"string"
+                    },
+                    {
+                        "name":"datasetKey",
+                        "description":"The dataset id",
+                        "in":"path",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/ODataResponse[List[Refresh]]"
+                        }
+                    }
+                },
+                "deprecated":false
+            },
+            "post":{
+                "tags":[
+                    "Datasets"
+                ],
+                "operationId":"Datasets_RefreshDatasetInGroup",
+                "summary":"Start a dataset refresh",
+                "consumes":[
+                ],
+                "produces":[
+                ],
+                "parameters":[
+                    {
+                        "name":"groupId",
+                        "in":"path",
+                        "required":true,
+                        "description":"The group id",
+                        "type":"string"
+                    },
+                    {
+                        "name":"datasetKey",
+                        "description":"The dataset id",
+                        "in":"path",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "202":{
+                        "description":"Accepted",
+                        "schema":{
+                            "$ref":"#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
+		"/v1.0/myorg/groups/{groupId}/datasets/{datasetKey}/Default.GetBoundGatewayDatasources":{
             "get":{
                 "tags":[
                     "Datasets"
@@ -1664,47 +1840,18 @@
                 "deprecated":false
             }
         },
-        "/v1.0/myorg/groups/{groupId}/gateways":{
-            "get":{
+        "/v1.0/myorg/groups/{groupId}/datasets/{datasetKey}/Default.BindToGateway":{
+            "post":{
                 "tags":[
-                    "Gateways"
+                    "Datasets"
                 ],
-                "operationId":"Gateways_GetGatewaysInGroup",
-                "summary":"Returns a list of gateways",
-                "consumes":[],
-                "produces":[
+                "operationId":"Datasets_BindToGatewayInGroup",
+                "summary":"Bind dataset to gateway",
+                "consumes":[
                     "application/json"
                 ],
-                "parameters":[
-                    {
-                        "name":"groupId",
-                        "in":"path",
-                        "required":true,
-                        "description":"The group id",
-                        "type":"string"
-                    }
-                ],
-                "responses":{
-                    "200":{
-                        "description":"OK",
-                        "schema":{
-                            "$ref":"#/definitions/ODataResponse[List[Gateway]]"
-                        }
-                    }
-                },
-                "deprecated":false
-            }
-        },
-		"/v1.0/myorg/groups/{groupId}/gateways/{gatewayId}":{
-            "get":{
-                "tags":[
-                    "Gateways"
-                ],
-                "operationId":"Gateways_GetGatewayByIdInGroup",
-                "summary":"Returns the specified gateway",
-                "consumes":[],
                 "produces":[
-                    "application/json"
+
                 ],
                 "parameters":[
                     {
@@ -1715,36 +1862,43 @@
                         "type":"string"
                     },
                     {
-                        "name": "gatewayId",
-                        "in": "path",
-                        "description": "The gateway id",
+                        "name":"datasetKey",
+                        "in":"path",
+                        "description":"The dataset id",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name": "bindToGatewayRequest",
+                        "in": "body",
+                        "description": "The bind to gateway request",
                         "required": true,
-                        "type": "string"
+                        "schema": {
+                            "$ref": "#/definitions/BindToGatewayRequest"
+                        }
                     }
                 ],
                 "responses":{
                     "200":{
                         "description":"OK",
                         "schema":{
-                            "$ref":"#/definitions/Gateway"
+                            "$ref":"#/definitions/Object"
                         }
                     }
                 },
                 "deprecated":false
             }
         },
-        "/v1.0/myorg/groups/{groupId}/gateways/{gatewayId}/datasources": {
-            "get": {
-                "tags": [
-                    "Datasources"
+        "/v1.0/myorg/groups/{groupId}/datasets/{datasetKey}/Default.TakeOver":{
+            "post":{
+                "tags":[
+                    "Datasets"
                 ],
-                "operationId": "Gateways_GetDatasourcesInGroup",
-                "summary": "Get all datasources of specific gateway",
-                "consumes": [ ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
+                "operationId":"Datasets_TakeOverInGroup",
+                "summary":"Take Over a dataset",
+                "consumes":[],
+                "produces":[],
+                "parameters":[
                     {
                         "name":"groupId",
                         "in":"path",
@@ -1753,204 +1907,25 @@
                         "type":"string"
                     },
                     {
-                        "name": "gatewayId",
-                        "in": "path",
-                        "description": "The gateway id",
-                        "required": true,
-                        "type": "string"
+                        "name":"datasetKey",
+                        "in":"path",
+                        "description":"The dataset id",
+                        "required":true,
+                        "type":"string"
                     }
                 ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/ODataResponse[List[GatewayDatasource]]"
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Object"
                         }
                     }
                 },
-                "deprecated": false
-            },
-            "post": {
-                "tags": [
-                    "Datasources"
-                ],
-                "operationId": "Gateways_CreateDatasourceInGroup",
-                "summary": "Create a datasource",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name":"groupId",
-                        "in":"path",
-                        "required":true,
-                        "description":"The group id",
-                        "type":"string"
-                    },
-                    {
-                        "name": "gatewayId",
-                        "in": "path",
-                        "description": "The gateway id",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "datasourceToGatewayRequest",
-                        "in": "body",
-                        "description": "The datasource requested to create",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/PublishDatasourceToGatewayRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "Created",
-                        "schema": {
-                            "$ref": "#/definitions/GatewayDatasource"
-                        }
-                    }
-                }
+                "deprecated":false
             }
         },
-        "/v1.0/myorg/groups/{groupId}/gateways/{gatewayId}/datasources/{datasourceId}": {
-            "get": {
-                "tags": [
-                    "Datasources"
-                ],
-                "operationId": "Gateways_GetDatasourceByIdInGroup",
-                "summary": "Get a datasource by id",
-                "consumes": [ ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name":"groupId",
-                        "in":"path",
-                        "required":true,
-                        "description":"The group id",
-                        "type":"string"
-                    },
-                    {
-                        "name": "gatewayId",
-                        "in": "path",
-                        "description": "The gateway id",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "datasourceId",
-                        "in": "path",
-                        "description": "The datasource id",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/GatewayDatasource"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "Datasources"
-                ],
-                "operationId": "Gateways_DeleteDatasourceInGroup",
-                "summary": "Delete a datasource",
-                "consumes": [ ],
-                "produces": [ ],
-                "parameters": [
-                    {
-                        "name":"groupId",
-                        "in":"path",
-                        "required":true,
-                        "description":"The group id",
-                        "type":"string"
-                    },
-                    {
-                        "name": "gatewayId",
-                        "in": "path",
-                        "description": "The gateway id",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "datasourceId",
-                        "in": "path",
-                        "description": "The datasource id",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/Object"
-                        }
-                    }
-                }
-            },
-            "patch": {
-                "tags": [
-                    "Datasources"
-                ],
-                "operationId": "Gateways_UpdateDatasourceInGroup",
-                "summary": "Update a datasource credentials",
-                "consumes": [ ],
-                "produces": [ ],
-                "parameters": [
-                    {
-                        "name":"groupId",
-                        "in":"path",
-                        "required":true,
-                        "description":"The group id",
-                        "type":"string"
-                    },
-                    {
-                        "name": "gatewayId",
-                        "in": "path",
-                        "description": "The gateway id",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "datasourceId",
-                        "in": "path",
-                        "description": "The datasource id",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "updateDatasourceRequest",
-                        "in": "body",
-                        "description": "The update datasource request",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/UpdateDatasourceRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/Object"
-                        }
-                    }
-                }
-            }
-        },
-        "/v1.0/myorg/groups/{groupId}/imports":{
+		"/v1.0/myorg/groups/{groupId}/imports":{
             "get":{
                 "tags":[
                     "Imports"
@@ -2803,6 +2778,22 @@
                 }
             }
         },
+        "ODataResponse[List[Refresh]]": {
+            "type": "object",
+            "description": "Odata response wrapper for a Power BI Refresh history",
+            "properties": {
+                "odata.context": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "array",
+                    "description": "The Refresh history list",
+                    "items": {
+                        "$ref": "#/definitions/Refresh"
+                    }
+                }
+            }
+        },
         "Report":{
             "type":"object",
             "description":"A Power BI Report",
@@ -2995,7 +2986,45 @@
                 }
             }
         },
-        "CloneReportRequest":{
+        "BindToGatewayRequest": {
+            "type": "object",
+            "description": "The Bind dataset to gateway request",
+            "properties": {
+                "gatewayObjectId": {
+                    "type": "string",
+                    "description": "The gateway id"
+                }
+            }
+        },
+		"Refresh": {
+            "type": "object",
+            "description": "A Power BI refresh history entry",
+            "properties": {
+                "refreshType": {
+                    "type": "string",
+                    "description": ""
+                },
+                "startTime": {
+                    "type": "string",
+					"format": "date-time",
+                    "description": ""
+                },
+                "endTime": {
+                    "type": "string",
+					"format": "date-time",
+                    "description": ""
+                },
+                "serviceExceptionJson": {
+                    "type": "string",
+                    "description": ""
+                },
+                "status": {
+                    "type": "string",
+                    "description": ""
+                }
+            }
+        },
+		"CloneReportRequest":{
             "type":"object",
             "description":"Power BI Clone Report Request",
             "properties":{
