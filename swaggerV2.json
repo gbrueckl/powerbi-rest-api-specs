@@ -3056,7 +3056,7 @@
             "type":"object",
             "description":"Power BI Generate Token Request",
             "properties":{
-                "access":{
+                "accessLevel":{
                     "type":"string",
                     "description":"The dataset mode or type",
                     "enum":[
