@@ -902,6 +902,36 @@
                 "deprecated":false
             }
         },
+        "/v1.0/myorg/reports/{reportKey}":{
+            "get":{
+                "tags":[
+                    "Reports"
+                ],
+                "summary":"Get the specified report",
+                "operationId":"Reports_GetReport",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"reportKey",
+                        "description":"The report id",
+                        "in":"path",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Report"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
         "/v1.0/myorg/dashboards":{
             "get":{
                 "tags":[
@@ -2269,6 +2299,43 @@
                         "description":"OK",
                         "schema":{
                             "$ref":"#/definitions/ODataResponse[List[Report]]"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
+        "/v1.0/myorg/groups/{groupId}/reports/{reportKey}":{
+            "get":{
+                "tags":[
+                    "Reports"
+                ],
+                "summary":"Get the specified report",
+                "operationId":"Reports_GetReportInGroup",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"groupId",
+                        "in":"path",
+                        "required":true,
+                        "description":"The group id",
+                        "type":"string"
+                    },
+                    {
+                        "name":"reportKey",
+                        "description":"The report id",
+                        "in":"path",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Report"
                         }
                     }
                 },
