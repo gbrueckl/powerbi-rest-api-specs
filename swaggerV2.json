@@ -902,36 +902,6 @@
                 "deprecated":false
             }
         },
-        "/v1.0/myorg/reports/{reportKey}":{
-            "get":{
-                "tags":[
-                    "Reports"
-                ],
-                "summary":"Get the specified report",
-                "operationId":"Reports_GetReport",
-                "produces":[
-                    "application/json"
-                ],
-                "parameters":[
-                    {
-                        "name":"reportKey",
-                        "description":"The report id",
-                        "in":"path",
-                        "required":true,
-                        "type":"string"
-                    }
-                ],
-                "responses":{
-                    "200":{
-                        "description":"OK",
-                        "schema":{
-                            "$ref":"#/definitions/Report"
-                        }
-                    }
-                },
-                "deprecated":false
-            }
-        },
         "/v1.0/myorg/dashboards":{
             "get":{
                 "tags":[
@@ -1396,6 +1366,34 @@
             }
         },
         "/v1.0/myorg/reports/{reportKey}":{
+            "get":{
+                "tags":[
+                    "Reports"
+                ],
+                "summary":"Get the specified report",
+                "operationId":"Reports_GetReport",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name":"reportKey",
+                        "description":"The report id",
+                        "in":"path",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Report"
+                        }
+                    }
+                },
+                "deprecated":false
+            },
             "delete":{
                 "tags":[
                     "Reports"
@@ -2340,6 +2338,44 @@
                     }
                 },
                 "deprecated":false
+            },
+            "delete":{
+                "tags":[
+                    "Reports"
+                ],
+                "summary":"Deletes the specified report",
+                "operationId":"Reports_DeleteReportInGroup",
+                "consumes":[
+
+                ],
+                "produces":[
+
+                ],
+                "parameters":[
+                    {
+                        "name":"groupId",
+                        "in":"path",
+                        "required":true,
+                        "description":"The group id",
+                        "type":"string"
+                    },
+                    {
+                        "name":"reportKey",
+                        "description":"The report id",
+                        "in":"path",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated":false
             }
         },
         "/v1.0/myorg/groups/{groupId}/reports/{reportKey}/Clone":{
@@ -2385,46 +2421,6 @@
                         "description":"OK",
                         "schema":{
                             "$ref":"#/definitions/Report"
-                        }
-                    }
-                },
-                "deprecated":false
-            }
-        },
-        "/v1.0/myorg/groups/{groupId}/reports/{reportKey}":{
-            "delete":{
-                "tags":[
-                    "Reports"
-                ],
-                "summary":"Deletes the specified report",
-                "operationId":"Reports_DeleteReportInGroup",
-                "consumes":[
-
-                ],
-                "produces":[
-
-                ],
-                "parameters":[
-                    {
-                        "name":"groupId",
-                        "in":"path",
-                        "required":true,
-                        "description":"The group id",
-                        "type":"string"
-                    },
-                    {
-                        "name":"reportKey",
-                        "description":"The report id",
-                        "in":"path",
-                        "required":true,
-                        "type":"string"
-                    }
-                ],
-                "responses":{
-                    "200":{
-                        "description":"OK",
-                        "schema":{
-                            "$ref":"#/definitions/Object"
                         }
                     }
                 },
