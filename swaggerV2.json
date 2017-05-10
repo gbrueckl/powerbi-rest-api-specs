@@ -3284,7 +3284,7 @@
                 }
             }
         },
-		"Refresh": {
+        "Refresh": {
             "type": "object",
             "description": "A Power BI refresh history entry",
             "properties": {
@@ -3294,12 +3294,12 @@
                 },
                 "startTime": {
                     "type": "string",
-					"format": "date-time",
+                    "format": "date-time",
                     "description": ""
                 },
                 "endTime": {
                     "type": "string",
-					"format": "date-time",
+                    "format": "date-time",
                     "description": ""
                 },
                 "serviceExceptionJson": {
@@ -3312,7 +3312,7 @@
                 }
             }
         },
-		"CloneReportRequest":{
+        "CloneReportRequest":{
             "type":"object",
             "description":"Power BI Clone Report Request",
             "properties":{
@@ -3365,6 +3365,15 @@
                 "token":{
                     "type":"string",
                     "description":"Embed token."
+                },
+                "tokenId":{
+                    "type":"string",
+                    "description":"Unique token Id."
+                },
+                "expiration":{
+                    "type": "string",
+                    "format": "date-time",
+                    "description":"Expiration time of token - in UTC."
                 }
             }
         }
