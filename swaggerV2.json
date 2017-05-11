@@ -483,7 +483,44 @@
                 "deprecated":false
             }
         },
-        "/v1.0/myorg/imports":{
+		"/v1.0/myorg/gateways/{gatewayId}/datasources/{datasourceId}/status": {
+            "get": {
+                "tags": [
+                    "Datasources"
+                ],
+                "operationId": "Gateways_GetDatasourceStatusById",
+                "summary": "Get a datasource status by id",
+                "consumes": [ ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "gatewayId",
+                        "in": "path",
+                        "description": "The gateway id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "datasourceId",
+                        "in": "path",
+                        "description": "The datasource id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Object"
+                        }
+                    }
+                }
+            }
+        },
+		"/v1.0/myorg/imports":{
             "get":{
                 "tags":[
                     "Imports"
