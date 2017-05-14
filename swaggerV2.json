@@ -888,7 +888,9 @@
                     }
                 },
                 "deprecated":false
-            },
+            }
+		},
+		"/v1.0/myorg/gateways/{gatewayId}/datasources/{datasourceId}/users/{emailAdress}": {
 			"delete":{
                 "tags":[
                     "Datasources"
@@ -917,7 +919,7 @@
                     },
 					{
                         "name": "emailAdress",
-                        "in": "body",
+                        "in": "path",
                         "description": "The user's email address",
                         "required": true,
                         "schema": {
