@@ -922,9 +922,7 @@
                         "in": "path",
                         "description": "The user's email address",
                         "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "type": "string"
                     }
                 ],
                 "responses":{
