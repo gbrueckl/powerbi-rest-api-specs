@@ -807,7 +807,7 @@
                 }
             }
         },
-		"/v1.0/myorg/gateways/{gatewayId}/datasources/{datasourceId}/users": {
+        "/v1.0/myorg/gateways/{gatewayId}/datasources/{datasourceId}/users": {
             "get": {
                 "tags": [
                     "Datasources"
@@ -843,7 +843,7 @@
                     }
                 }
             },
-			"post":{
+            "post":{
                 "tags":[
                     "Datasources"
                 ],
@@ -889,7 +889,7 @@
                 },
                 "deprecated":false
             },
-			"delete":{
+            "delete":{
                 "tags":[
                     "Datasources"
                 ],
@@ -936,7 +936,7 @@
                 "deprecated":false
             }
         },
-		"/v1.0/myorg/imports":{
+        "/v1.0/myorg/imports":{
             "get":{
                 "tags":[
                     "Imports"
@@ -3248,7 +3248,7 @@
                 }
             }
         },
-		"ODataResponse[List[UserAccessRight]]": {
+        "ODataResponse[List[UserAccessRight]]": {
             "type": "object",
             "description": "Odata response wrapper for a Power BI user Access Right List",
             "properties": {
@@ -3508,7 +3508,7 @@
                 }
             }
         },
-		"CloneReportRequest":{
+        "CloneReportRequest":{
             "type":"object",
             "description":"Power BI Clone Report Request",
             "properties":{
