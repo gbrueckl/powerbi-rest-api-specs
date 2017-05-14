@@ -807,7 +807,7 @@
                 }
             }
         },
-		"/v1.0/myorg/gateways/{gatewayId}/datasources/{datasourceId}/users": {
+        "/v1.0/myorg/gateways/{gatewayId}/datasources/{datasourceId}/users": {
             "get": {
                 "tags": [
                     "Datasources"
@@ -843,7 +843,7 @@
                     }
                 }
             },
-			"post":{
+            "post":{
                 "tags":[
                     "Datasources"
                 ],
@@ -869,7 +869,7 @@
                         "required": true,
                         "type": "string"
                     },
-					{
+                    {
                         "name": "addUserToDatasourceRequest",
                         "in": "body",
                         "description": "The add user to datasource request",
@@ -889,9 +889,9 @@
                 },
                 "deprecated":false
             }
-		},
-		"/v1.0/myorg/gateways/{gatewayId}/datasources/{datasourceId}/users/{emailAdress}": {
-			"delete":{
+        },
+        "/v1.0/myorg/gateways/{gatewayId}/datasources/{datasourceId}/users/{emailAdress}": {
+            "delete":{
                 "tags":[
                     "Datasources"
                 ],
@@ -917,7 +917,7 @@
                         "required": true,
                         "type": "string"
                     },
-					{
+                    {
                         "name": "emailAdress",
                         "in": "path",
                         "description": "The user's email address",
@@ -938,7 +938,7 @@
                 "deprecated":false
             }
         },
-		"/v1.0/myorg/imports":{
+        "/v1.0/myorg/imports":{
             "get":{
                 "tags":[
                     "Imports"
@@ -3250,7 +3250,7 @@
                 }
             }
         },
-		"ODataResponse[List[UserAccessRight]]": {
+        "ODataResponse[List[UserAccessRight]]": {
             "type": "object",
             "description": "Odata response wrapper for a Power BI user Access Right List",
             "properties": {
@@ -3510,7 +3510,7 @@
                 }
             }
         },
-		"CloneReportRequest":{
+        "CloneReportRequest":{
             "type":"object",
             "description":"Power BI Clone Report Request",
             "properties":{
