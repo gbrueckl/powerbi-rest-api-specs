@@ -807,7 +807,138 @@
                 }
             }
         },
-		"/v1.0/myorg/imports":{
+        "/v1.0/myorg/gateways/{gatewayId}/datasources/{datasourceId}/users": {
+            "get": {
+                "tags": [
+                    "Datasources"
+                ],
+                "operationId": "Gateways_GetDatasourceUsers",
+                "summary": "Get a datasource users list",
+                "consumes": [ ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "gatewayId",
+                        "in": "path",
+                        "description": "The gateway id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "datasourceId",
+                        "in": "path",
+                        "description": "The datasource id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref":"#/definitions/ODataResponse[List[UserAccessRight]]"
+                        }
+                    }
+                }
+            },
+            "post":{
+                "tags":[
+                    "Datasources"
+                ],
+                "operationId":"Gateways_AddDatasourceUser",
+                "summary":"Get a datasource user",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                ],
+                "parameters":[
+                    {
+                        "name": "gatewayId",
+                        "in": "path",
+                        "description": "The gateway id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "datasourceId",
+                        "in": "path",
+                        "description": "The datasource id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "addUserToDatasourceRequest",
+                        "in": "body",
+                        "description": "The add user to datasource request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserAccessRight"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
+        "/v1.0/myorg/gateways/{gatewayId}/datasources/{datasourceId}/users/{emailAdress}": {
+            "delete":{
+                "tags":[
+                    "Datasources"
+                ],
+                "operationId":"Gateways_DeleteDatasourceUser",
+                "summary":"Delete a datasource user",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                ],
+                "parameters":[
+                    {
+                        "name": "gatewayId",
+                        "in": "path",
+                        "description": "The gateway id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "datasourceId",
+                        "in": "path",
+                        "description": "The datasource id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "emailAdress",
+                        "in": "path",
+                        "description": "The user's email address",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated":false
+            }
+        },
+        "/v1.0/myorg/imports":{
             "get":{
                 "tags":[
                     "Imports"
@@ -3119,6 +3250,22 @@
                 }
             }
         },
+        "ODataResponse[List[UserAccessRight]]": {
+            "type": "object",
+            "description": "Odata response wrapper for a Power BI user Access Right List",
+            "properties": {
+                "odata.context": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "array",
+                    "description": "The user Access Right List",
+                    "items": {
+                        "$ref": "#/definitions/UserAccessRight"
+                    }
+                }
+            }
+        },
         "Report":{
             "type":"object",
             "description":"A Power BI Report",
@@ -3344,6 +3491,20 @@
                     "description": ""
                 },
                 "status": {
+                    "type": "string",
+                    "description": ""
+                }
+            }
+        },
+        "UserAccessRight": {
+            "type": "object",
+            "description": "A Power BI user Access Right entry",
+            "properties": {
+                "accessRight": {
+                    "type": "string",
+                    "description": ""
+                },
+                "emailAddress": {
                     "type": "string",
                     "description": ""
                 }
