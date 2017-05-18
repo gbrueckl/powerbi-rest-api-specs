@@ -1090,6 +1090,16 @@
                     "items": {
                         "$ref": "#/definitions/Dataset"
                     }
+                },
+                "createdDateTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The import creation time"
+                },
+                "updatedDateTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The import last update time"
                 }
             }
         },
