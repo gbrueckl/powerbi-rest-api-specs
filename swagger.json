@@ -1094,12 +1094,12 @@
                 "createdDateTime": {
                     "type": "string",
                     "format": "date-time",
-                    "description": "The import creation time"
+                    "description": "Import creation time"
                 },
                 "updatedDateTime": {
                     "type": "string",
                     "format": "date-time",
-                    "description": "The import last update time"
+                    "description": "Import last update time"
                 }
             }
         },
