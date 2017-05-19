@@ -1671,7 +1671,7 @@
                     "Datasets"
                 ],
                 "summary":"Post a new entity to datasets",
-                "operationId":"Datasets_PostDataset",
+                "operationId":"Datasets_PostDatasetInGroup",
                 "consumes":[
                     "application/json"
                 ],
@@ -1773,7 +1773,7 @@
                     "Datasets"
                 ],
                 "summary":"Deletes all rows from the specified table",
-                "operationId":"Datasets_DeleteRows",
+                "operationId":"Datasets_DeleteRowsInGroup",
                 "consumes":[
 
                 ],
@@ -1953,7 +1953,7 @@
                 "tags":[
                     "Datasets"
                 ],
-                "operationId":"Datasets_DeleteDatasetById",
+                "operationId":"Datasets_DeleteDatasetByIdInGroup",
                 "summary":"Deletes the dataset with the specified id",
                 "consumes":[
 
@@ -2325,7 +2325,7 @@
                     "Imports"
                 ],
                 "summary":"Creates a new import using the specified import info",
-                "operationId":"Imports_PostImport",
+                "operationId":"Imports_PostImportInGroup",
                 "consumes":[
                     "application/json"
                 ],
